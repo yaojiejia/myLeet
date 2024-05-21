@@ -10,7 +10,6 @@ class Solution:
 
         if depth == len(l):
             l.append(root.val)
-
-        # Process the right child first to ensure the rightmost node at each level is processed first
+            
         self.bfs(root.right, l, depth + 1)
         self.bfs(root.left, l, depth + 1)
