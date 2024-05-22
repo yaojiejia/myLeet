@@ -2,7 +2,8 @@ class Solution(object):
     def findMaxConsecutiveOnes(self, nums):
         maxcount = 0
         count = 0
-        for i in range(len(nums)):
+        length = len(nums)
+        for i in range(length):
             if nums[i] == 1:
                 count += 1
             if nums[i] == 0:
