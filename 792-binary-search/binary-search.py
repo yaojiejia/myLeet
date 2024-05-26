@@ -1,10 +1,7 @@
 class Solution(object):
     def search(self, nums, target):
-
-        return self.BST(nums, target, 0, len(nums)-1)
-        
-    def BST(self, nums, target, low, high):
-
+        low = 0
+        high = len(nums) - 1
         while low <= high:
             mid = low + (high - low) // 2
 
