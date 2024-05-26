@@ -3,9 +3,10 @@ class Solution(object):
         lp = 0
         rp = len(numbers)-1
         while lp < rp:
-            if numbers[lp] + numbers[rp] == target:
+            temp = numbers[lp] + numbers[rp]
+            if temp == target:
                 return [lp+1, rp+1]
-            elif numbers[lp] + numbers[rp] > target:
+            elif temp > target:
                 rp -= 1
             else:
                 lp += 1
