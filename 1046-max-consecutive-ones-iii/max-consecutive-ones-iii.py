@@ -3,8 +3,8 @@ class Solution(object):
         count = 0
         res = 0
         lp = 0
-
-        for rp in range(len(nums)):
+        length = len(nums)
+        for rp in range(length):
             if nums[rp] == 1:
                 count += 1
 
