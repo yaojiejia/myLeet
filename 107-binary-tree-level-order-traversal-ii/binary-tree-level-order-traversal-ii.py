@@ -14,8 +14,7 @@ class Solution(object):
             level = []
             for i in range(len(queue)):
                 temp = queue.popleft()
-                if temp:
-                    level.append(temp.val)
+                level.append(temp.val)
                 if temp.left:
                     queue.append(temp.left)
                 if temp.right:
