@@ -13,4 +13,8 @@ class Solution(object):
             return False
         if not root.left and not root.right:
             return curr + root.val == target
-        return self.helper(root.left, curr + root.val, target) or self.helper(root.right, curr + root.val, target)
+        if self.helper(root.left, curr + root.val, target):
+            return True
+        if self.helper(root.right, curr + root.val, target):
+            return True
+        return False
