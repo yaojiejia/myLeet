@@ -16,10 +16,10 @@ class Solution(object):
         path.append(root.val)
         if not root.left and not root.right and sum(path) == target:
             res.append(list(path))
-        if root.left:
-            self.helper(root.left, res, path, target)
-        if root.right:
-            self.helper(root.right, res, path, target)
+    
+        self.helper(root.left, res, path, target)
+      
+        self.helper(root.right, res, path, target)
         path.pop()
         
         
