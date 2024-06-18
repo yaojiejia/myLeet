@@ -3,27 +3,26 @@ from typing import List
 
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
+        if not grid:
+            return 0
+        
         rows, cols = len(grid), len(grid[0])
-        visit = set()
         res = 0
-
-        def bfs(r, c):
-            q = deque()
-            visit.add((r, c))
-            q.append((r, c))
-            while q:
-                row, col = q.popleft()
-                directions = [[0, 1], [0, -1], [1, 0], [-1, 0]]
-                for xDir, yDir in directions:
-                    newR, newC = row + xDir, col + yDir
-                    if (newR in range(rows) and newC in range(cols) and (newR, newC) not in visit and grid[newR][newC] == "1"):
-                        q.append((newR, newC))
-                        visit.add((newR, newC))
-
+        direction = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+        
         for r in range(rows):
             for c in range(cols):
-                if grid[r][c] == "1" and (r, c) not in visit:
+                if grid[r][c] == "1":
                     res += 1
-                    bfs(r, c)
-
+                    grid[r][c] = "0"
+                    q = deque([(r, c)])
+                    
+                    while q:
+                        row, col = q.popleft()
+                        for dx, dy in direction:
+                            newRow = row + dx
+                            newCol = col + dy
+                            if 0 <= newRow < rows and 0 <= newCol < cols and grid[newRow][newCol] == "1":
+                                grid[newRow][newCol] = "0"
+                                q.append((newRow, newCol))
         return res
