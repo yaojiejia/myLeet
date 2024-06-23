@@ -7,7 +7,7 @@ class Solution:
             mid = lp+(rp-lp)//2
             pile = 0
             for c in candies:
-                pile += math.floor(c/mid)
+                pile += c//mid
             if pile >= k:
                 
                 lp = mid + 1
