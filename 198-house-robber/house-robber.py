@@ -13,7 +13,7 @@ class Solution:
         for i in range(1,len(res)-1):
             res[i+1] = max((nums[i+1] + res[i-1]),res[i])
             print(res[i+1])
-        return max(res)
+        return res[len(res)-1]
 
 
         
