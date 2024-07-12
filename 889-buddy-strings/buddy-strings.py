@@ -17,4 +17,5 @@ class Solution:
                 pairs.append((s[i], goal[i]))
                 
         # There must be exactly 2 differing pairs and they must be swappable
+        
         return len(pairs) == 2 and pairs[0] == pairs[1][::-1]
