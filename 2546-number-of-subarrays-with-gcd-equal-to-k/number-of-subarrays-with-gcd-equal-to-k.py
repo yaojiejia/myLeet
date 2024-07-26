@@ -7,4 +7,6 @@ class Solution:
                 temp = math.gcd(temp,nums[j])
                 if temp == k:
                     res += 1
+                elif temp < k:
+                    break
         return res
