@@ -8,4 +8,6 @@ class Solution:
                 temp = math.lcm(temp, nums[j])
                 if temp == k:
                     res += 1
+                if k < temp:
+                    break
         return res
