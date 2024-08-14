@@ -1,15 +1,19 @@
-class Solution(object):
-    def topKFrequent(self, nums, k):
-        result = {}
-        for num in nums:
-            if num in result:
-                result[num] += 1
-            else:
-                result[num] = 1
-        
-        sorted_result = sorted(result.items(), key=lambda x: x[1], reverse=True)
-        top_k = [item[0] for item in sorted_result[:k]]
-        return top_k
+from collections import Counter
+from typing import List
 
-
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        # Count the frequency of each element in the list
+        count = Counter(nums)
         
+        # Get the most common elements as a list of tuples
+        most_common_elements = count.most_common()
+        
+        # Initialize an empty list to store the result
+        res = []
+        
+        # Loop through the most common elements and add the first k elements to res
+        for i in range(k):
+            res.append(most_common_elements[i][0])
+        
+        return res
