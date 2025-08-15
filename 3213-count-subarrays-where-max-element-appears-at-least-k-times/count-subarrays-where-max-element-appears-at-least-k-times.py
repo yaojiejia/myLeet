@@ -3,19 +3,21 @@ from typing import List
 class Solution:
     def countSubarrays(self, nums: List[int], k: int) -> int:
         max_num = max(nums)
-        max_num_cnt = {max_num: 0}
+        cnt = 0
         lp = 0
         res = 0
+        n = len(nums)
 
-        for rp in range(len(nums)):
-            if nums[rp] == max_num:
-                max_num_cnt[max_num] += 1
+        for rp, val in enumerate(nums):
+            if val == max_num:
+                cnt += 1
 
-            while max_num_cnt[max_num] >= k:
+            while cnt >= k:
+                # all subarrays [lp..rp], [lp+1..rp], ... that start at lp
+                # will still have ≥k maxes if we fix rp; there are (n - rp) choices for the end
+                res += n - rp
                 if nums[lp] == max_num:
-                    max_num_cnt[max_num] -= 1
+                    cnt -= 1
                 lp += 1
-
-            res += lp  # all starts before lp are valid
 
         return res
