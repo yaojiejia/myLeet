@@ -1,19 +1,21 @@
-class Solution(object):
-    def successfulPairs(self, spells, potions, success):
-        n = len(spells)
-        m = len(potions)
-        pairs = [0] * n
+from typing import List
+
+class Solution:
+    def successfulPairs(self, spells: List[int], potions: List[int], success: int) -> List[int]:
         potions.sort()
-        for i in range(n):
+        res = []
+        
+        for i in range(len(spells)):   
             spell = spells[i]
-            left = 0
-            right = m - 1
-            while left <= right:
-                mid = left + (right - left) // 2
-                product = spell * potions[mid]
-                if product >= success:
-                    right = mid - 1
+
+            lp = 0
+            rp = len(potions) - 1
+            while lp <= rp:
+                mid = (lp + rp) // 2
+                if spell * potions[mid] < success:   
+                    lp = mid + 1
                 else:
-                    left = mid + 1
-            pairs[i] = m - left
-        return pairs
+                    rp = mid - 1
+
+            res.append(len(potions) - lp) 
+        return res
