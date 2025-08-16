@@ -14,7 +14,7 @@ class Solution:
             total_hours = sum(math.ceil(p / mid) for p in piles)
 
             if total_hours <= h:    # can finish in time, try smaller speed
-                res = mid
+                res = min(res,mid)
                 rp = mid - 1
             else:                   # need to eat faster
                 lp = mid + 1
