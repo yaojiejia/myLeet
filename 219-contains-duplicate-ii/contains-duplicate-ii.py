@@ -6,8 +6,6 @@ class Solution:
         for i in range(n-1, -1, -1):
             if nums[i] in seen:
                 if abs(i-seen[nums[i]]) <= k:
-                    print(nums[i])
-                    print(i)
                     return True
             
             seen[nums[i]] = i
