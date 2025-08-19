@@ -1,15 +1,20 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
 class Solution:
-    def rightSideView(self, root):
-        l1 = []
-        self.bfs(root, l1, 0)
-        return l1
+    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+        ans = []
 
-    def bfs(self, root, l, depth):
-        if not root:
-            return
-
-        if depth == len(l):
-            l.append(root.val)
+        def f(r, h):
+            if not r:
+                return
+            if h == len(ans):
+                ans.append(r.val)
+            f(r.right, h+1)
+            f(r.left, h+1)
+        f(root, 0)
+        return ans
             
-        self.bfs(root.right, l, depth + 1)
-        self.bfs(root.left, l, depth + 1)
