@@ -18,6 +18,6 @@ class Solution:
             left  = helper(r.left, low, r.val)
             right = helper(r.right, r.val, high)
 
-            return left and right   # ✅ not left == right
+            return left and right
 
         return helper(root, float("-inf"), float("inf"))
