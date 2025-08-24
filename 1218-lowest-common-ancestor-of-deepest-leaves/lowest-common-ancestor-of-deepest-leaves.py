@@ -35,9 +35,15 @@ class Solution:
                 return r
             left = lca(r.left, p, q)
             right = lca(r.right, p, q)
+
             if left and right:
                 return r
-            return left if left else right
+            if left and not right:
+                return left
+            if not left and right:
+                return right
+            if not left and not right:
+                return None
 
         ans = target[0]
         for i in range(1, len(target)):
