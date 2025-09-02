@@ -1,24 +1,13 @@
-class Solution(object):
-    def merge(self, intervals):
-        intervals.sort(key=lambda x: x[0])
-        res = []
+class Solution:
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
         stack = []
-        for i in range(len(intervals) - 1, -1, -1):
-            stack.append(intervals[i])
-
-        while stack:
-            temp = stack.pop()
-            if not stack:
-                res.append(temp)
-                break
-            temp2 = stack.pop()
-            if temp[1] >= temp2[0]: 
-                merged = [min(temp[0], temp2[0]), max(temp[1], temp2[1])]
-                stack.append(merged)
+        intervals.sort()
+        for interval in intervals:
+            if stack and interval[0] <= stack[-1][1]:
+                temp = stack.pop()
+                merged_interval = [min(temp[0], interval[0]), max(temp[1], interval[1])]
+                stack.append(merged_interval)
             else:
-                res.append(temp)
-                stack.append(temp2)
-        return res
+                stack.append(interval)
+        return stack
 
-
-        
