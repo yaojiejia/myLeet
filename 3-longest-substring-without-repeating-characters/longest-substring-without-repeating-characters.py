@@ -1,26 +1,15 @@
-class Solution(object):
-    def lengthOfLongestSubstring(self, s):
-        if s == "":
-            return 0
-        if s == " ":
-            return 1
-        if len(s) == 1:
-            return 1
-        maxWord = ""
-        word = s[0]
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        window = {}
+        lp = 0
+        res = 0
 
-        for i in range(1, len(s)):
-            char = s[i]
-            if char in word:
-                if len(word) > len(maxWord):
-                    maxWord = word
-                index = word.index(char)
-                word = word[index+1:] + char
-            else:
-                word += char
-
-        return max(len(word), len(maxWord))
-            
-
-            
-        
+        for rp in range(len(s)):
+            while lp <= rp and s[rp] in window:
+                window[s[lp]] = False
+                if window[s[lp]] is False:
+                    del window[s[lp]]
+                lp += 1
+            window[s[rp]] = True
+            res = max(res,(rp-lp) + 1)
+        return res
