@@ -9,7 +9,6 @@ class Solution:
             if s[rp+1] != lp_char:
                 n = (rp-lp+1)
                 ans += (n*(n+1)) // 2
-                ans %= MOD
                 lp = rp + 1
                 lp_char = s[rp+1]
         n = (len(s) - lp)
