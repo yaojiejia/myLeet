@@ -1,18 +1,17 @@
 class Solution:
     def countGoodStrings(self, low: int, high: int, zero: int, one: int) -> int:
-        mod = 10**9 + 7
-        dp = {}
-        def dfs(length):
-            if length > high:
-                return 0
-            if length in dp:
-                return dp[length]
+        MOD = 10**9 + 7
+        dp = [0] * (high + 1)
+        dp[0] = 1
 
-            dp[length] = 1 if length >= low else 0
+        for i in range(1, high + 1):
+            if i - zero >= 0:
+                dp[i] += dp[i - zero]
+            if i - one >= 0:
+                dp[i] += dp[i - one]
+            dp[i] %= MOD
 
-            dp[length] += dfs(length+zero)
-            dp[length] += dfs(length+one)
-
-            return dp[length] % mod
-        
-        return dfs(0)
+        res = 0
+        for i in range(low, high + 1):
+            res += dp[i]
+        return res % MOD
