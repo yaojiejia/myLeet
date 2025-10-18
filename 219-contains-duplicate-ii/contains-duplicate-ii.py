@@ -6,7 +6,5 @@ class Solution:
             if num in m:
                 if i - m[num] <= k:
                     return True
-                m[num] = i
-            else:
-                m[num] = i
+            m[num] = i
         return False
