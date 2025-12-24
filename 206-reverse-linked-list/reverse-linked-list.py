@@ -12,5 +12,4 @@ class Solution:
             head.next = prev
             prev = head
             head = temp
-        head = prev
-        return head
+        return prev
