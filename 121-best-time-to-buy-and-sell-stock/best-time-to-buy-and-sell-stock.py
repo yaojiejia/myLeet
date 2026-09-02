@@ -1,7 +1,6 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        if prices == sorted(prices, reverse=True):
-            return 0
+       
         profits = []
         buy = 0
         sell = 1 
