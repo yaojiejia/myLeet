@@ -1,0 +1,1 @@
+<h2>number-of-adjacent-elements-with-the-same-color Notes</h2><hr>[ Time taken: 27 m 45 s ]
